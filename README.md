@@ -1,139 +1,178 @@
-# 🤖 Sales Prediction - Machine Learning
+# 📈 Sales Prediction with Machine Learning
 
-Projeto de Ciência de Dados desenvolvido para prever vendas com base em investimentos em marketing realizados em TV, Rádio e Jornal.
+Projeto de Machine Learning para previsão de vendas com base em investimentos realizados em diferentes canais de publicidade.
 
-Utilizando técnicas de análise exploratória de dados e Machine Learning para identificar quais canais possuem maior impacto nas vendas e construir modelos capazes de realizar previsões futuras.
-
----
-
-## 🎯 Problema de negócio
-
-Uma empresa deseja prever suas vendas futuras com base nos investimentos realizados em diferentes canais de publicidade.
-
-O objetivo é responder perguntas como
-
-* Qual canal gera maior impacto nas vendas?
-* É possível prever vendas futuras utilizando dados históricos?
-* Qual modelo de Machine Learning apresenta melhor desempenho?
+O objetivo foi identificar quais canais de marketing possuem maior impacto nas vendas e desenvolver um modelo capaz de prever resultados futuros a partir dos investimentos em TV, Rádio e Jornal.
 
 ---
 
-## 🛠️ Tecnologias utilizadas
+# 🎯 Problema de Negócio
+
+A empresa realiza investimentos em diferentes meios de comunicação e precisava responder algumas perguntas estratégicas:
+
+* Qual canal de marketing possui maior influência nas vendas?
+* É possível prever as vendas futuras com base nos investimentos realizados?
+* Qual modelo de Machine Learning apresenta melhor desempenho para esse problema?
+* Como otimizar a distribuição do orçamento de marketing?
+
+As vendas presentes na base de dados são representadas em milhões.
+
+---
+
+# 🛠️ Tecnologias Utilizadas
 
 * Python
 * Pandas
+* Scikit-Learn
 * Matplotlib
 * Seaborn
-* Scikit-Learn
 * Jupyter Notebook
+* Git
+* GitHub
 
 ---
 
-## 📂 Estrutura do projeto
+# 📂 Estrutura do Projeto
 
-```text id="wd6x3k"
-main.ipynb       -> análise, treinamento e avaliação dos modelos
-advertising.csv  -> base histórica de vendas para análise
-novos.csv        -> novos dados para previsão
+```text
+Sales-Prediction-ML/
+│
+├── data/
+│   ├── advertising.csv
+│   ├── novos.csv
+│   └── novos_gerados.csv
+│
+├── functions/
+│   ├── __init__.py
+│   ├── avaliacoes.py
+│   └── visualizacoes.py
+│
+├── notebooks/
+│   └── main.ipynb
+│
+├── scripts/
+│   └── gerar_dados_novos.py
+│
+├── .gitignore
+├── requirements.txt
+└── README.md
 ```
 
----
+## Responsabilidade dos módulos
 
-## 📈 Etapas do projeto
+### avaliacoes.py
 
-### 🔹 Tratamento e exploração dos dados
+* Funções reutilizáveis para avaliação dos modelos
+* Cálculo de métricas de desempenho
+* Padronização da apresentação dos resultados
 
-* Leitura da base
-* Análise de correlação
-* Visualização dos relacionamentos entre variáveis
-* Interpretação dos dados
+### visualizacoes.py
 
----
+* Funções reutilizáveis para geração de gráficos
+* Comparação entre valores reais e previstos
+* Comparação entre modelos de Machine Learning
 
-### 🔹 Modelagem de Machine Learning
+### gerar_dados_novos.py
 
-Foram utilizados dois modelos de regressão:
-
-* Linear Regression
-* Random Forest Regressor
-
----
-
-### 🔹 Separação dos dados
-
-Os dados foram divididos em:
-
-* treino
-* teste
-
-Utilizando `train_test_split`.
+* Geração de novos cenários de investimento
+* Criação de dados para realização de previsões futuras
 
 ---
 
-### 🔹 Avaliação dos modelos
+# 📈 Etapas da Análise
 
-Os modelos foram avaliados utilizando:
+## 🔹 Análise Exploratória
+
+Realizei uma análise de correlação entre as variáveis para identificar quais investimentos apresentam maior relação com as vendas.
+
+Os resultados mostraram:
+
+* TV possui a maior correlação com as vendas
+* Rádio apresenta influência moderada
+* Jornal possui baixa correlação
+
+---
+
+## 🔹 Treinamento dos Modelos
+
+Foram utilizados dois algoritmos de regressão:
+
+### Linear Regression
+
+Utilizado como modelo baseline pois é simples e fácil de interpretar.
+
+### Random Forest Regressor
+
+Escolhido pela capacidade de capturar relações não lineares e interações mais complexas entre as variáveis.
+
+---
+
+## 🔹 Avaliação dos Modelos
+
+Os modelos foram avaliados usando:
 
 * MAE (Mean Absolute Error)
 * R² Score
 
----
-
-## 📊 Resultados obtidos
-
-### 📌 Linear Regression
-
-* MAE: 1.16
-* R²: 0.91
+O Random Forest teve melhor desempenho em ambas as métricas.
 
 ---
 
-### 📌 Random Forest
+# 📊 Importância das Variáveis
 
-* MAE: 1.01
-* R²: 0.94
+A análise de Feature Importance do Random Forest mostrou:
 
----
+| Variável | Importância |
+| -------- | ----------- |
+| TV       | 85%         |
+| Rádio    | 13%         |
+| Jornal   | 2%          |
 
-## 🏆 Modelo escolhido
-
-O modelo Random Forest apresentou melhor desempenho geral:
-
-* menor erro médio
-* maior capacidade preditiva
-* melhor adaptação às relações não lineares
-
-Por esse motivo, foi escolhido como modelo final para previsão de vendas.
+Os investimentos em TV são os principais responsáveis pelas previsões realizadas pelo modelo.
 
 ---
 
-## 🔍 Principais insights encontrados
+# 🔍 Principais Insights
 
-### 📌 Investimentos em TV apresentaram maior correlação com as vendas
+## 📺 TV
 
----
+O investimento em TV apresentou o maior impacto nas vendas, sendo o principal fator considerado pelo modelo.
 
-### 📌 Rádio também demonstrou impacto relevante nas vendas
+## 📻 Rádio
 
----
+Os investimentos em rádio também contribuíram para as previsões, porém com influência significativamente menor que a TV.
 
-### 📌 Jornal apresentou baixa influência nos resultados
+## 📰 Jornal
 
----
-
-### 📌 O Random Forest conseguiu capturar melhor os padrões dos dados
+O investimento em jornal apresentou baixa relevância para a previsão das vendas.
 
 ---
 
-## 🔮 Previsão com novos dados
+# 🤖 Modelo Final
 
-O modelo final foi utilizado para prever vendas futuras com novos investimentos em publicidade.
+Após a comparação entre os modelos, o Random Forest foi selecionado como modelo final.
 
-Exemplo de previsões geradas:
+* Menor erro médio (MAE)
+* Maior capacidade explicativa (R²)
+* Melhor desempenho geral nas previsões
 
-```python id="v4mggc"
-[ 7.726   9.919  20.2695]
-```
+---
 
-* Meu LinkedIn: https://www.linkedin.com/in/felipe-ghensev-peres-7a7427343/
-* GitHub: https://github.com/FelipeGhensevPeres
+# 📈 Previsão de Novos Cenários
+
+Gerei um codigo como novo cenário de investimento para simular previsões futuras.
+
+O modelo foi utilizado para estimar as vendas esperadas para cada combinação de investimentos em TV, Rádio e Jornal.
+
+Os resultados reforçaram a importância dos investimentos em TV como principal impulsionador das vendas.
+
+---
+
+# 💡 Conclusões
+
+Com base na análise realizada, foi possível concluir que:
+
+* Os investimentos em TV possuem o maior impacto sobre as vendas
+* Rádio apresenta influência complementar
+* Jornal possui baixa relevância para o problema analisado
+* O modelo Random Forest apresentou melhor desempenho que a Regressão Linear
